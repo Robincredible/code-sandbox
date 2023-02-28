@@ -7,17 +7,23 @@ import { useState } from "react";
 
 const Dashboard = (props) => {
   const [selected, setSelected] = useState([]);
-  console.log("From the dashboard " + selected);
+  console.log("From the dashboard - " + selected);
 
   return (
     <div>
       <div>
         <Profile name={props.name} />
-        <Period onChange={changeHandler} selectTime={setSelected} />
+        <Period selectTime={setSelected} />
       </div>
       <div>
         {data.map((item) => {
-          return <Stats title={item.title} timeframes={item.timeframes} />;
+          return (
+            <Stats
+              title={item.title}
+              timeframes={item.timeframes}
+              selected={selected}
+            />
+          );
         })}
       </div>
     </div>
