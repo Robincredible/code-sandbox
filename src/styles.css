@@ -1,4 +1,19 @@
+html {
+  background: #0d1323;
+  color: #eeeeee;
+}
+
+body {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .App {
-  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  min-height: 100vh;
+  margin: 0 auto;
+  font-family: sans-serif;
 }
