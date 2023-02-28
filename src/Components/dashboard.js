@@ -6,17 +6,14 @@ import Period from "./period";
 import { useState } from "react";
 
 const Dashboard = (props) => {
-  const [selected, setSelected] = useState("Weekly");
+  const [selected, setSelected] = useState([]);
+  console.log("From the dashboard " + selected);
 
-  // const changeHandler = (e) => {
-  //   console.log("From the dashboard " + e);
-  //   setSelected(e);
-  // };
   return (
     <div>
       <div>
         <Profile name={props.name} />
-        <Period selectTime={setSelected} />
+        <Period onChange={changeHandler} selectTime={setSelected} />
       </div>
       <div>
         {data.map((item) => {

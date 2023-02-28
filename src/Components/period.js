@@ -2,7 +2,7 @@ import Card from "./UI/card";
 import { useState } from "react";
 
 const Period = (props) => {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Weekly");
 
   const clickHandler = (e) => {
     //console.log(e.target.textContent);
