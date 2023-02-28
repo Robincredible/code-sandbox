@@ -6,7 +6,7 @@ const Profile = (props) => {
     <div>
       <Card className="profile">
         <p>Report for</p>
-        <h1>{props.name || "Jeremy Robson"}</h1>
+        <h1>{props.name || "Normal Person"}</h1>
       </Card>
     </div>
   );
