@@ -8,12 +8,14 @@ const Period = (props) => {
     setSelected(e.target.textContent);
     props.selectTime(selected);
 
-    if (e.target.id === selected) {
-      e.target.className += "active ";
-    } else if (e.target.className.has("active")) {
-      e.currentTarget.className += "";
+    console.log(selected);
+
+    if (e.currentTarget.id != selected) {
+      e.currentTarget.classList += "";
+    } else if (e.currentTarget.classList.contains("active")) {
+      e.currentTarget.classList += "";
     } else {
-      e.currentTarget.className += "";
+      e.currentTarget.classList += "active";
     }
   };
 
