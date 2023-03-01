@@ -1,0 +1,19 @@
+.stats-container.grid {
+  display: grid;
+  grid-template-columns: 5fr 5fr 5fr;
+  grid-template-rows: 260px 260px;
+  flex-basis: 100%;
+  grid-gap: 30px 30px;
+}
+
+.flex-display {
+  display: flex;
+  width: 100%;
+  flex-basis: 100%;
+  align-self: center;
+  align-items: flex-end;
+}
+
+.profile-container {
+  padding-right: 30px;
+}
