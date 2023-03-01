@@ -1,27 +1,33 @@
 import "./dashboard.css";
 import data from "../data.json";
+import timeframesData from "../timeframes.json";
 import Profile from "./profile";
 import Stats from "./stats";
 import Period from "./period";
 import { useState } from "react";
 
 const Dashboard = (props) => {
-  const [selected, setSelected] = useState([]);
-  console.log("From the dashboard - " + selected);
+  const [selected, setSelected] = useState("Weekly");
+  const timeframes = ["Daily", "Weekly", "Monthly"];
 
   return (
-    <div>
-      <div>
+    <div className="flex-display">
+      <div className="profile-container">
         <Profile name={props.name} />
-        <Period selectTime={setSelected} />
+        <Period
+          timeframes={timeframes}
+          selectTime={setSelected}
+          selected={selected}
+        />
       </div>
-      <div>
+      <div className="stats-container grid">
         {data.map((item) => {
           return (
             <Stats
               title={item.title}
               timeframes={item.timeframes}
               selected={selected}
+              key={item.title}
             />
           );
         })}

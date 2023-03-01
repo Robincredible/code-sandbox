@@ -1,35 +1,36 @@
 import Card from "./UI/card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import "./period.css";
 
 const Period = (props) => {
-  const [selected, setSelected] = useState("Weekly");
+  const [selected, setSelected] = useState(props.selected);
+  const [active, setActive] = useState(-1);
+  const timeframes = props.timeframes;
+
+  useEffect(() => {
+    setSelected(selected);
+    props.selectTime(selected);
+    updateActiveElement(selected);
+  }, [selected]);
+
+  const updateActiveElement = (id) => {
+    setActive(active !== id ? id : -1);
+  };
 
   const clickHandler = (e) => {
-    setSelected(e.target.textContent);
-    props.selectTime(selected);
-
-    console.log(selected);
-
-    if (e.currentTarget.id != selected) {
-      e.currentTarget.classList += "";
-    } else if (e.currentTarget.classList.contains("active")) {
-      e.currentTarget.classList += "";
-    } else {
-      e.currentTarget.classList += "active";
-    }
+    const value = e.currentTarget.textContent;
+    setSelected(value);
   };
 
   return (
     <Card className="period">
-      <p id="Daily" onClick={clickHandler}>
-        Daily
-      </p>
-      <p id="Weekly" onClick={clickHandler}>
-        Weekly
-      </p>
-      <p id="Monthly" onClick={clickHandler}>
-        Monthly
-      </p>
+      {timeframes.map((timeframe) => {
+        return (
+          <p key={timeframe} id={timeframe} onClick={clickHandler}>
+            {timeframe}
+          </p>
+        );
+      })}
     </Card>
   );
 };
