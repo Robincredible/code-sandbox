@@ -18,7 +18,7 @@ const Period = (props) => {
   };
 
   const clickHandler = (e) => {
-    const value = e.currentTarget.textContent;
+    const value = e.currentTarget.id;
     setSelected(value);
   };
 
