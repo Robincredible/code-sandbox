@@ -1,3 +1,7 @@
-.period p{
-    cursor: pointer;    
+.period p {
+  cursor: pointer;
+}
+
+.active {
+  font-weight: 600;
 }

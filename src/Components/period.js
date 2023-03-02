@@ -1,33 +1,42 @@
-import Card from "./UI/card";
 import { useEffect, useState } from "react";
+
+import Card from "./UI/card";
 import "./period.css";
 
 const Period = (props) => {
   const [selected, setSelected] = useState(props.selected);
-  const [active, setActive] = useState(-1);
+  const [active, setActive] = useState(1);
   const timeframes = props.timeframes;
 
+  /* Show the current updated state and runs before render */
   useEffect(() => {
     setSelected(selected);
-    props.selectTime(selected);
-    updateActiveElement(selected);
+    props.selectTime(selected); //lift state up to parent component
   }, [selected]);
 
   const updateActiveElement = (id) => {
-    setActive(active !== id ? id : -1);
+    setActive(active !== id ? id : selected);
   };
 
   const clickHandler = (e) => {
     const value = e.currentTarget.id;
-    setSelected(value);
+    const selectedValue = e.currentTarget.getAttribute("data-text");
+    setSelected(selectedValue); // choosing an item updates the state
+    updateActiveElement(value); // update the state with the id of the active element
   };
 
   return (
     <Card className="period">
       {timeframes.map((timeframe) => {
         return (
-          <p key={timeframe} id={timeframe} onClick={clickHandler}>
-            {timeframe}
+          <p
+            key={timeframe.text}
+            id={timeframe.id}
+            data-text={timeframe.text}
+            className={active == timeframe.id ? "active" : ""}
+            onClick={clickHandler}
+          >
+            {timeframe.text}
           </p>
         );
       })}

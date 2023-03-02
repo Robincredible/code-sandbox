@@ -3,7 +3,6 @@ import "./stats.css";
 
 const Stats = (props) => {
   const timeframeSelected = props.selected.toLowerCase();
-  const timeframes = props.timeframes;
 
   return (
     <Card>

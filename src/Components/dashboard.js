@@ -1,21 +1,22 @@
+import { useState } from "react";
+
 import "./dashboard.css";
 import data from "../data.json";
-import timeframesData from "../timeframes.json";
+import timeframesData from "../timeframes.json"; // created a test json so we can scale the items if needed and recieve json data from APIs
 import Profile from "./profile";
 import Stats from "./stats";
 import Period from "./period";
-import { useState } from "react";
 
 const Dashboard = (props) => {
   const [selected, setSelected] = useState("Weekly");
-  const timeframes = ["Daily", "Weekly", "Monthly"];
+  const timeframes = ["Daily", "Weekly", "Monthly"]; //test data
 
   return (
     <div className="flex-display">
       <div className="profile-container">
         <Profile name={props.name} />
         <Period
-          timeframes={timeframes}
+          timeframes={timeframesData}
           selectTime={setSelected}
           selected={selected}
         />
