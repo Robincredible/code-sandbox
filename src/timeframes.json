@@ -1,11 +1,14 @@
 [
   {
-    "daily": {}
+    "id": 0,
+    "text": "Daily"
   },
   {
-    "weekly": {}
+    "id": 1,
+    "text": "Weekly"
   },
   {
-    "monthly": {}
+    "id": 2,
+    "text": "Monthly"
   }
 ]
