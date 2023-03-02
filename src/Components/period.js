@@ -5,7 +5,7 @@ import "./period.css";
 
 const Period = (props) => {
   const [selected, setSelected] = useState(props.selected);
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(selected);
   const timeframes = props.timeframes;
 
   /* Show the current updated state and runs before render */
@@ -19,7 +19,7 @@ const Period = (props) => {
   };
 
   const clickHandler = (e) => {
-    const value = e.currentTarget.id;
+    const value = e.currentTarget.getAttribute("data-text");
     const selectedValue = e.currentTarget.getAttribute("data-text");
     setSelected(selectedValue); // choosing an item updates the state
     updateActiveElement(value); // update the state with the id of the active element
@@ -33,7 +33,7 @@ const Period = (props) => {
             key={timeframe.text}
             id={timeframe.id}
             data-text={timeframe.text}
-            className={active == timeframe.id ? "active" : ""}
+            className={active == timeframe.text ? "active" : ""}
             onClick={clickHandler}
           >
             {timeframe.text}
